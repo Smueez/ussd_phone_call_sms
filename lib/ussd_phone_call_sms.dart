@@ -12,8 +12,8 @@ class UssdPhoneCallSms {
       }
     }
     catch(e, s){
-      print("Inside ussd_phone_call_sms > phoneCall method error: $e");
-      print("Inside ussd_phone_call_sms > phoneCall method stack: $s");
+      print("Inside ussd_phone_call_sms -> phoneCall method error: $e");
+      print("Inside ussd_phone_call_sms -> phoneCall method stack: $s");
     }
 
   }
@@ -26,8 +26,23 @@ class UssdPhoneCallSms {
 
     }
     catch(e, s){
-      print("Inside ussd_phone_call_sms > textSMS method error: $e");
-      print("Inside ussd_phone_call_sms > textSMS method stack: $s");
+      print("Inside ussd_phone_call_sms -> textSMS method error: $e");
+      print("Inside ussd_phone_call_sms -> textSMS method stack: $s");
+    }
+
+  }
+
+  textMultiSMS({required List<String> recieverPhoneNumberList, required String smsBody})async{
+    try {
+      if(Platform.isAndroid){
+        for(String recieverPhoneNumber in recieverPhoneNumberList){
+          await _androidChannel.invokeMethod('textSMS', <String, dynamic>{"phone_number": recieverPhoneNumber, "sms_body": smsBody});
+        }
+      }
+    }
+    catch(e, s){
+      print("Inside ussd_phone_call_sms -> textSMS method error: $e");
+      print("Inside ussd_phone_call_sms -> textSMS method stack: $s");
     }
 
   }
