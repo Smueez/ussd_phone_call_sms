@@ -1,4 +1,3 @@
-import'dart:io' show Platform;
 import 'package:flutter/services.dart';
 
 class UssdPhoneCallSms {
@@ -7,9 +6,7 @@ class UssdPhoneCallSms {
 
   phoneCall({required String phoneNumber})async {
     try {
-      if(Platform.isAndroid){
-        await _androidChannel.invokeMethod('phoneCall', <String, dynamic>{"phone_number": phoneNumber} );
-      }
+      await _androidChannel.invokeMethod('phoneCall', <String, dynamic>{"phone_number": phoneNumber} );
     }
     catch(e, s){
       print("Inside ussd_phone_call_sms -> phoneCall method error: $e");
@@ -18,11 +15,9 @@ class UssdPhoneCallSms {
 
   }
 
-  textSMS({required String recieverPhoneNumber, required String smsBody})async{
+  textSMS({required String recipients, required String smsBody})async{
     try {
-      if(Platform.isAndroid){
-        await _androidChannel.invokeMethod('textSMS', <String, dynamic>{"phone_number": recieverPhoneNumber, "sms_body": smsBody});
-      }
+      await _androidChannel.invokeMethod('textSMS', <String, dynamic>{"phone_number": recipients, "sms_body": smsBody});
 
     }
     catch(e, s){
@@ -32,12 +27,10 @@ class UssdPhoneCallSms {
 
   }
 
-  textMultiSMS({required List<String> recieverPhoneNumberList, required String smsBody})async{
+  textMultiSMS({required List<String> recipientsList, required String smsBody})async{
     try {
-      if(Platform.isAndroid){
-        for(String recieverPhoneNumber in recieverPhoneNumberList){
-          await _androidChannel.invokeMethod('textSMS', <String, dynamic>{"phone_number": recieverPhoneNumber, "sms_body": smsBody});
-        }
+      for(String recieverPhoneNumber in recipientsList){
+        await _androidChannel.invokeMethod('textSMS', <String, dynamic>{"phone_number": recieverPhoneNumber, "sms_body": smsBody});
       }
     }
     catch(e, s){
