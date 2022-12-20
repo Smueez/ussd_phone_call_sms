@@ -1,7 +1,7 @@
 import Flutter
 import UIKit
 import MessageUI
-public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin {
+public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin, MFMessageComposeViewControllerDelegate {
    var result: FlutterResult?
    var _arguments = [String: Any]()
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -14,8 +14,16 @@ public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin {
    if(call.method == "phoneCall") {
         if let url = URL(string: "tel:" + call.argument("phone_number")),
         UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
+            if #available(iOS 10, *){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+            }else{
+                UIApplication.shared.openURL(url)
+            }
+            
+        }else{
+            //add error message here
+        }
    }
    else if (call.method == "textSMS") {
          _arguments = call.arguments as! [String : Any];
@@ -31,6 +39,7 @@ public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin {
                   self.result = result
                   let controller = MFMessageComposeViewController()
                   controller.body = _arguments["message"] as? String
+                  controller.subject = "Test Message"
                   controller.recipients = _arguments["recipients"] as? [String]
                   controller.messageComposeDelegate = self
                   UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
