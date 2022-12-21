@@ -22,7 +22,12 @@ public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin, MFMessageComp
             }
             
         }else{
-            //add error message here
+           result(FlutterError(
+                    code: "can_not_call",
+                    message: "Cannot make a call on this device!",
+                    details: "Cannot make a call on this device!"
+                 )
+           )
         }
    }
    else if (call.method == "textSMS") {
@@ -38,9 +43,9 @@ public class SwiftUssdPhoneCallSmsPlugin: NSObject, FlutterPlugin, MFMessageComp
                 if (MFMessageComposeViewController.canSendText()) {
                   self.result = result
                   let controller = MFMessageComposeViewController()
-                  controller.body = _arguments["message"] as? String
+                  controller.body = _arguments["sms_body"] as? String
                   controller.subject = "Test Message"
-                  controller.recipients = _arguments["recipients"] as? [String]
+                  controller.recipients = _arguments["phone_number"] as? [String]
                   controller.messageComposeDelegate = self
                   UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true, completion: nil)
                 } else {
