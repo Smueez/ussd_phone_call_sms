@@ -1,6 +1,6 @@
 name: ussd_phone_call_sms
 description: A new Flutter plugin for phone call and send sms.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/Smueez/ussd_phone_call_sms.git
 
 environment:

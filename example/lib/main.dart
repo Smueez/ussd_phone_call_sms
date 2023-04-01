@@ -27,11 +27,12 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      await _ussdPhoneCallSmsPlugin.phoneCall(phoneNumber: '+8801XXXXXXXXXXXX') ?? 'Unknown platform version'; // phone number
-    } catch(e) {
+      await _ussdPhoneCallSmsPlugin.phoneCall(
+              phoneNumber: '+8801XXXXXXXXXXXX') ??
+          'Unknown platform version'; // phone number
+    } catch (e) {
       print(e);
     }
-
   }
 
   @override

@@ -12,21 +12,25 @@ add this in your pubspec.yaml
 
 #### How to use it
 - TO make phone call or USSD request
-
+** check phone call permission **
 ```
-     // check phone call permisison
+     // to make phone call
      await UssdPhoneCallSms().phoneCall(phoneNumber: '+8801xxxxxxxxx');
+     
+     // to make USSD call
      await UssdPhoneCallSms().phoneCall(phoneNumber: '*121#');
      
 ```
 
 
 - TO text SMS
-
+** check text sms permission **
 ```
-     // check text sms permisison
+     // to send a single SMS
      await UssdPhoneCallSms().textMultiSMS(recipients: '+8801xxxxxxxxxx', smsBody: 'Hello World!');
-     await UssdPhoneCallSms().textMultiSMS(recipientsList: ['+8801xxxxxxxxxx', '+8801xxxxxxxxxx'], smsBody: 'Hello group!'); // to send a group sms
+     
+     // to send a group SMS
+     await UssdPhoneCallSms().textMultiSMS(recipientsList: ['+8801xxxxxxxxxx', '+8801xxxxxxxxxx'], smsBody: 'Hello group!');
      
 ```
 
