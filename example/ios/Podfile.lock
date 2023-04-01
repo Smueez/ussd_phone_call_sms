@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - ussd_phone_call_sms (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - ussd_phone_call_sms (from `.symlinks/plugins/ussd_phone_call_sms/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  ussd_phone_call_sms:
+    :path: ".symlinks/plugins/ussd_phone_call_sms/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  ussd_phone_call_sms: bd407ddcaf6071306f8bdf4ee4576b609fe1ee95
+
+PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
+
+COCOAPODS: 1.11.3
