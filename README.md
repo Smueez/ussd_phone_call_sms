@@ -11,8 +11,8 @@ add this in your pubspec.yaml
 `ussd_phone_call_sms: ^leatest_version`
 
 #### How to use it
-- TO make phone call or USSD request
-** check phone call permission **
+- TO make phone call or USSD request<br />
+  - check phone call permission
 ```
      // to make phone call
      await UssdPhoneCallSms().phoneCall(phoneNumber: '+8801xxxxxxxxx');
@@ -23,8 +23,8 @@ add this in your pubspec.yaml
 ```
 
 
-- TO text SMS
-** check text sms permission **
+- TO text SMS<br />
+  - check text sms permission
 ```
      // to send a single SMS
      await UssdPhoneCallSms().textMultiSMS(recipients: '+8801xxxxxxxxxx', smsBody: 'Hello World!');
@@ -33,5 +33,12 @@ add this in your pubspec.yaml
      await UssdPhoneCallSms().textMultiSMS(recipientsList: ['+8801xxxxxxxxxx', '+8801xxxxxxxxxx'], smsBody: 'Hello group!');
      
 ```
+#### What Features this plugin covers
+
+- [x] Direct phone call
+- [x] USSD call
+- [x] Send SMS
+- [x] Send same SMS to multi phone numbers at once
+- [ ] Send multimedia SMS
 
 ### End

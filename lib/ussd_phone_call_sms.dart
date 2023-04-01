@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 class UssdPhoneCallSms {
@@ -14,8 +15,8 @@ class UssdPhoneCallSms {
       await _androidChannel.invokeMethod(
           'phoneCall', <String, dynamic>{"phone_number": phoneNumber});
     } catch (e, s) {
-      print("Inside ussd_phone_call_sms -> phoneCall method error: $e");
-      print("Inside ussd_phone_call_sms -> phoneCall method stack: $s");
+      debugPrint("Inside ussd_phone_call_sms -> phoneCall method error: $e");
+      debugPrint("Inside ussd_phone_call_sms -> phoneCall method stack: $s");
     }
   }
 
@@ -29,8 +30,8 @@ class UssdPhoneCallSms {
       await _androidChannel.invokeMethod('textSMS',
           <String, dynamic>{"phone_number": recipients, "sms_body": smsBody});
     } catch (e, s) {
-      print("Inside ussd_phone_call_sms -> textSMS method error: $e");
-      print("Inside ussd_phone_call_sms -> textSMS method stack: $s");
+      debugPrint("Inside ussd_phone_call_sms -> textSMS method error: $e");
+      debugPrint("Inside ussd_phone_call_sms -> textSMS method stack: $s");
     }
   }
 
@@ -49,8 +50,8 @@ class UssdPhoneCallSms {
         });
       }
     } catch (e, s) {
-      print("Inside ussd_phone_call_sms -> textSMS method error: $e");
-      print("Inside ussd_phone_call_sms -> textSMS method stack: $s");
+      debugPrint("Inside ussd_phone_call_sms -> textSMS method error: $e");
+      debugPrint("Inside ussd_phone_call_sms -> textSMS method stack: $s");
     }
   }
 }
